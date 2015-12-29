@@ -1,6 +1,7 @@
-<?php /**
-* Author: wildpenguin
-* Display a hall of fame style board of users based on some entry data
+<?php 
+/**
+* Author: wildpenguin@gmail.com
+* Display a hall of fame style board of users based on some sort of quantity evaluation
 * Ex: Henry solved 30 tickets this week and he gets the first place on our praise board (5 starts)
 * Albert got only 22 tickets and now he has a reason to hate Henry ;)
 */
@@ -10,8 +11,10 @@ class PraiseBoard
 
 	private $data;
 
-	public function __construct()
+	public function __construct($data = null)
 	{
+		if(!is_null($data))
+			$this->data = $data;
 	}
 
 	public function setData($data)
@@ -45,8 +48,8 @@ class PraiseBoard
 	{
 		asort($this->data);
 		return $this->data;
-		
 	}
+	
 	/**
 	* Find the max value from stats provided
 	*
@@ -56,12 +59,15 @@ class PraiseBoard
 		return max(array_values($this->data));
 	}
 
+	/**
+	* Compare the measured quantity to the max value
+	*/
 	public function quantityAsPercentage()
 	{
 		$maxValue = $this->findMaxValue();
 
 		array_walk($this->data, function(&$value, &$key) use ($maxValue){
-			$value = sprintf("%1.2f", $value / $maxValue);
+			$value = round($value / $maxValue, 2);
 		});
 		
 		return $this->data;

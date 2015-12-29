@@ -69,17 +69,17 @@ class PraiseBoardTest extends PHPUnit_Framework_TestCase
 	{
 		$this->praiseBoard->setData(array(
 			'sarah'=>10,
-			'jonathan'=>20,
-			'john'=>30,
-			'mary'=>5,
+			'jonathan'=>40,
+			'john'=>20,
+			'mary'=>4,
 		));
 
 		$result = $this->praiseBoard->buildStats();
 		$this->assertEquals($result, array(
-			'john'=>1,
-			'jonathan'=>0.66,
-			'sarah'=>0.33,
-			'mary'=>0.16
+			'john'=>0.5,
+			'jonathan'=>1,
+			'sarah'=>0.25,
+			'mary'=>0.1
 		));
 
 	}
