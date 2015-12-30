@@ -9,17 +9,23 @@
 class PraiseBoard 
 {
 
-	private $data;
+	private $_data;
 
+	/**
+	* Constructor takes data as parameter
+	*/
 	public function __construct($data = null)
 	{
 		if(!is_null($data))
-			$this->data = $data;
+			$this->_data = $data;
 	}
 
+	/**
+	* Setter for private $_data 
+	*/
 	public function setData($data)
 	{
-		$this->data = $data;
+		$this->_data = $data;
 	}
 
 	/**
@@ -28,16 +34,16 @@ class PraiseBoard
 	*/
 	public function buildStats()
 	{
-		if(empty($this->data))
+		if(empty($this->_data))
 			return array();
 
-		if(count($this->data) === 1)
-			return $this->data;
+		if(count($this->_data) === 1)
+			return $this->_data;
 
 		$this->orderData();
 		$this->quantityAsPercentage();
 
-		return $this->data;
+		return $this->_data;
 
 	}
 
@@ -46,8 +52,8 @@ class PraiseBoard
 	*/
 	public function orderData()
 	{
-		asort($this->data);
-		return $this->data;
+		arsort($this->_data);
+		return $this->_data;
 	}
 	
 	/**
@@ -56,7 +62,7 @@ class PraiseBoard
 	*/
 	public function findMaxValue()
 	{
-		return max(array_values($this->data));
+		return max(array_values($this->_data));
 	}
 
 	/**
@@ -66,11 +72,11 @@ class PraiseBoard
 	{
 		$maxValue = $this->findMaxValue();
 
-		array_walk($this->data, function(&$value, &$key) use ($maxValue){
+		array_walk($this->_data, function(&$value, &$key) use ($maxValue){
 			$value = round($value / $maxValue, 2);
 		});
 		
-		return $this->data;
+		return $this->_data;
 	}
 
 	
