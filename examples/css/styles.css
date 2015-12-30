@@ -1,0 +1,11 @@
+/*http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-display-using-jquery-and-css*/
+
+span.stars, span.stars span {
+	display:block;
+	background: url("images/star_grey.png") 0 0 repeat-x;
+	width:80px;
+}
+
+span.stars span {
+	background:url("images/star.png") 0 0 repeat-x;
+}

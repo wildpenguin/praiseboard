@@ -7,7 +7,7 @@
 * author: wildpenguin@gmail.com
 * 
 */
- 	require_once('PraiseBoard.php');
+ 	require_once('../PraiseBoard.php');
 
 		// these data comes from the db
 		$data = array(
