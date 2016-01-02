@@ -37,9 +37,6 @@ class PraiseBoard
 		if(empty($this->_data))
 			return array();
 
-		if(count($this->_data) === 1)
-			return $this->_data;
-
 		$this->orderData();
 		$this->quantityAsPercentage();
 
