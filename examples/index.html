@@ -5,12 +5,12 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			var items = [];
 			var pixelWidth = 80; // 16px * 5 stars
 			$.getJSON("backend.php", function(data){
 				$.each(data.stats, function(key, val){
 				var span = 
 				'<span class="stars"><span style="width:'+pixelWidth*val+'px">&nbsp;</span> </span>';
+
 				$("#stats").append("<p>" + key + span + "</p>");
 
 				});
